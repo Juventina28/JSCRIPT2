@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Tarefas</title>
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body class="grey lighten-4">
+
+  <div class="container">
+    <h4 class="center-align">📋 Lista de Tarefas</h4>
+
+    <div class="row">
+      <div class="input-field col s10">
+        <input type="text" id="tarefa" placeholder="Digite sua tarefa">
+        <label for="tarefa">Tarefa</label>
+      </div>
+      <div class="col s2">
+        <button onclick="adicionarTarefa()" class="btn waves-effect waves-light blue" style="margin-top: 20px;">Adicionar</button>
+      </div>
+    </div>
+
+    <ul id="lista" class="collection z-depth-1"></ul>
+  </div>
+
+  <!-- Materialize JS e jQuery (necessário para alguns componentes) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+  <script>
+    function adicionarTarefa() {
+      const input = document.getElementById("tarefa");
+      const valor = input.value.trim();
+
+      if (valor === "") {
+        M.toast({html: 'Digite uma tarefa válida!', classes: 'red'});
+        return;
+      }
+
+      const lista = document.getElementById("lista");
+      const item = document.createElement("li");
+      item.className = "collection-item";
+      item.textContent = valor;
+      lista.appendChild(item);
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
